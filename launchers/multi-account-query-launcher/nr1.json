@@ -1,0 +1,7 @@
+{
+    "schemaType": "LAUNCHER",
+    "id": "multi-account-query-launcher",
+    "displayName": "Multi Account Query",
+    "description": "Run an NRQL query accross all of your sub accounts",
+    "rootNerdletId": "multi-account-query-nerdlet"
+}
