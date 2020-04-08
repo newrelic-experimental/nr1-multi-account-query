@@ -6,9 +6,13 @@
 
 This application allows you to write an NRQL query which is run on all your sub accounts and collated into a single result set table. You can also specify pre-defined queries to make common queries easy to use.
 
-
-
 It incorporates a [custom component](components/AccountrNRQL/index.js) that automates the batching of queries to the NerdGraph API which can be used seperately in your own projects.
+
+![screenshot](gfx/screenshot.png)
+
+
+
+![screenshot2](gfx/screenshot2.png)
 
 
 
