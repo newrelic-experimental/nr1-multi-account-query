@@ -173,6 +173,15 @@ export default class QueryTableWidget extends React.Component {
                                                     if (data) {
 
                                                         let tableData=tabulateData(data,this.state.sortField)
+
+                                                        //determine the columns, we need to find the row with the most columns.
+                                                        let columns=[]
+                                                        tableData.forEach((row)=>{
+                                                            let rowKeys=Object.keys(row)
+                                                            if(rowKeys.length > columns.length) { columns=rowKeys }
+                                                        })
+                                                        
+                                                                                                                
                                                         if(tableData && tableData.length > 0 ) {
                                                             const tdata = [
                                                                 {
@@ -181,7 +190,7 @@ export default class QueryTableWidget extends React.Component {
                                                                         name: 'Series 1',
                                                                         color: '#008c99',
                                                                         viz: 'main',
-                                                                        columns: Object.keys(tableData[0]),
+                                                                        columns: columns,
                                                                     },
                                                                     data: tableData
                                                                 },
