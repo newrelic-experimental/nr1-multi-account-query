@@ -190,7 +190,7 @@ export default class QueryTableWidget extends React.Component {
                                                                         name: 'Series 1',
                                                                         color: '#008c99',
                                                                         viz: 'main',
-                                                                        columns: columns,
+                                                                        columns: columns.splice(0,50), //limit to 50 columns
                                                                     },
                                                                     data: tableData
                                                                 },
