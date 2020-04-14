@@ -27,7 +27,7 @@ export default class AccountsNRQL extends React.Component {
 
         }
     }
-    loadData() {
+    async loadData() {
 
         const { accountList, nrql, shardSize } = this.props
         let resultData={}
@@ -84,17 +84,18 @@ export default class AccountsNRQL extends React.Component {
           }
 
 
-        let accountListChunks=chunkArray(accountList,shardSize ? shardSize : 10)
-        let queryPromises=accountListChunks.map((chunk)=>{
-            return shardedQuery(chunk)
-        })
+        let accountListChunks=chunkArray(accountList,shardSize ? shardSize : 50)
 
-        let that=this
-        Promise.all(queryPromises).catch(function(err) {
-            that.setState({loading: false, error: err})
-        }).then(function(values) {
-            that.setState({queryData: resultData, loading: false})
-        });
+        for (let i = 0; i < accountListChunks.length; i++) {
+            try {
+                await shardedQuery(accountListChunks[i])
+            } catch(e) {
+                console.log(`Error with request ${i+1}`)
+            }
+            
+        }
+        this.setState({queryData: resultData, loading: false})
+    
     }
 
     render() {
