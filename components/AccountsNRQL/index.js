@@ -91,7 +91,7 @@ export default class AccountsNRQL extends React.Component {
 
         let that=this
         Promise.all(queryPromises).catch(function(err) {
-            that.setState({oading: false, error: err})
+            that.setState({loading: false, error: err})
         }).then(function(values) {
             that.setState({queryData: resultData, loading: false})
         });
