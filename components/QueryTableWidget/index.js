@@ -1,12 +1,13 @@
 import React from 'react';
-import {Spinner, AccountsQuery,TableChart,TextField,Button, Grid, GridItem,SelectItem, Select } from 'nr1'
+import {Spinner, AccountsQuery,TableChart,TextField,Button, Grid, GridItem,SelectItem, Select, Checkbox } from 'nr1'
+import { CSVLink, CSVDownload } from "react-csv"
 import AccountsNRQL from '../AccountsNRQL'
 
 export default class QueryTableWidget extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { formData: {}, selectedQuery: "customOption"};
+        this.state = { formData: { csvChecked: true}, selectedQuery: "customOption"};
         this.querySharding=this.props.config.querySharding ? this.props.config.querySharding : 50 //shard the queries into sets of n to avoid breaching limits
 
         //specify any account ID's to skip querying
@@ -16,12 +17,13 @@ export default class QueryTableWidget extends React.Component {
 
     formSubmit(e) {
         e.preventDefault()
-        this.setState({nrql: this.state.formData.nrql, sortField: this.state.formData.sortField})
+        this.setState({...this.state.formData})
     }
 
     handleChange(field,value){
         let fdata=this.state.formData;
         fdata[field]=value
+ 
         this.setState({
             formData: fdata
         });
@@ -123,6 +125,16 @@ export default class QueryTableWidget extends React.Component {
                 </GridItem>
             </Grid>
             <Grid>
+             <GridItem columnStart={2} columnEnd={12}>
+                    <Checkbox className="formatCheckBox"
+                        checked={formData.csvChecked}
+                        onChange={(e)=>{this.handleChange('csvChecked',e.target.checked)}}
+                        label='Table output'
+                    />
+                </GridItem>
+            </Grid>
+
+            <Grid>
                 <GridItem columnStart={2} columnEnd={12}>
                 <br />    
                 <Button onClick={this.formSubmit} iconType={Button.ICON_TYPE.INTERFACE__OPERATIONS__SEARCH} type={Button.TYPE.PRIMARY}>Run query</Button>
@@ -196,10 +208,25 @@ export default class QueryTableWidget extends React.Component {
                                                                 },
                                                             ];
                                                             let fields=Object.keys(tableData[0]).map((key,idx)=>{return idx==0 ? `"${key}"` : `, "${key}"`})
+
+                                                            let outTable
+                                                            if(this.state.csvChecked===false) {
+                                                                
+                                                                outTable=<div>
+                                                                    <CSVLink filename="QueryData.csv" data={tdata[0].data}>Download CSV</CSVLink>
+                                                                    <br /><br />
+                                                                    <TextField
+                                                                    multiline
+                                                                    label='JSON Data'
+                                                                    value={JSON.stringify(tdata[0].data)}  />
+                                                                </div>
+                                                            } else {
+                                                                outTable=<TableChart data={tdata} fullWidth style={{"height": "80vw"}} />
+                                                            }
                                                             return <Grid><GridItem columnSpan={12}>
-                                                                 <div className="totalRows"><strong>Total rows:</strong> {tableData.length}</div>
-                                                                 <div className="resultFields"><strong>Result fields:</strong> {fields}</div>
-                                                                <TableChart data={tdata} fullWidth style={{"height": "80vw"}} />
+                                                                <div className="totalRows"><strong>Total rows:</strong> {tableData.length}</div>
+                                                                <div className="resultFields"><strong>Result fields:</strong> {fields}</div>
+                                                                {outTable}
                                                                 
                                                             </GridItem></Grid>
                                                         } else {

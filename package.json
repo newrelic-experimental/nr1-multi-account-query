@@ -9,6 +9,7 @@
     "dependencies": {
         "prop-types": "^15.6.2",
         "react": "^16.6.3",
+        "react-csv": "^2.0.3",
         "react-dom": "^16.6.3",
         "react-jsonschema-form": "^1.8.1"
     },
