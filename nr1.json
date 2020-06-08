@@ -1,6 +1,6 @@
 {
   "schemaType": "NERDPACK",
-  "id": "",
+  "id": "6d25dede-f634-4c95-a725-6575b1ebfd16",
   "displayName": "Multi Account Query",
   "description": "Run an NRQL query across all your accounts"
 }
