@@ -1,8 +1,132 @@
 {
-  "lastUpdated": "Mon Jun 08 2020 13:07:13 GMT-0400 (Eastern Daylight Time)",
+  "lastUpdated": "Mon Jun 08 2020 17:15:11 GMT+0000 (Coordinated Universal Time)",
   "projectName": "nr1-multi-account-query",
   "projectUrl": "https://github.com/newrelic-experimental/nr1-multi-account-query",
   "includeDev": true,
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "prop-types@15.7.2": {
+      "name": "prop-types",
+      "version": "15.7.2",
+      "range": "^15.6.2",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/facebook/prop-types",
+      "versionedRepoUrl": "https://github.com/facebook/prop-types/tree/v15.7.2",
+      "licenseFile": "node_modules/prop-types/LICENSE",
+      "licenseUrl": "https://github.com/facebook/prop-types/blob/v15.7.2/LICENSE",
+      "licenseTextSource": "file"
+    },
+    "react-csv@2.0.3": {
+      "name": "react-csv",
+      "version": "2.0.3",
+      "range": "^2.0.3",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/react-csv/react-csv",
+      "versionedRepoUrl": "https://github.com/react-csv/react-csv/tree/v2.0.3",
+      "licenseFile": "node_modules/react-csv/LICENSE.txt",
+      "licenseUrl": "https://github.com/react-csv/react-csv/blob/v2.0.3/LICENSE.txt",
+      "licenseTextSource": "file",
+      "publisher": "Abdennour TOUMI",
+      "email": "http://abdennoor.com"
+    },
+    "react-dom@16.13.1": {
+      "name": "react-dom",
+      "version": "16.13.1",
+      "range": "^16.6.3",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/facebook/react",
+      "versionedRepoUrl": "https://github.com/facebook/react/tree/v16.13.1",
+      "licenseFile": "node_modules/react-dom/LICENSE",
+      "licenseUrl": "https://github.com/facebook/react/blob/v16.13.1/LICENSE",
+      "licenseTextSource": "file"
+    },
+    "react-jsonschema-form@1.8.1": {
+      "name": "react-jsonschema-form",
+      "version": "1.8.1",
+      "range": "^1.8.1",
+      "licenses": "Apache-2.0",
+      "repoUrl": "https://github.com/mozilla-services/react-jsonschema-form",
+      "versionedRepoUrl": "https://github.com/mozilla-services/react-jsonschema-form/tree/v1.8.1",
+      "licenseFile": "node_modules/react-jsonschema-form/LICENSE.md",
+      "licenseUrl": "https://github.com/mozilla-services/react-jsonschema-form/blob/v1.8.1/LICENSE.md",
+      "licenseTextSource": "file",
+      "publisher": "Nicolas Perriault",
+      "email": "nperriault@mozilla.com"
+    },
+    "react@16.13.1": {
+      "name": "react",
+      "version": "16.13.1",
+      "range": "^16.6.3",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/facebook/react",
+      "versionedRepoUrl": "https://github.com/facebook/react/tree/v16.13.1",
+      "licenseFile": "node_modules/react/LICENSE",
+      "licenseUrl": "https://github.com/facebook/react/blob/v16.13.1/LICENSE",
+      "licenseTextSource": "file"
+    }
+  },
+  "devDependencies": {
+    "@newrelic/eslint-plugin-newrelic@0.3.0": {
+      "name": "@newrelic/eslint-plugin-newrelic",
+      "version": "0.3.0",
+      "range": "^0.3.0",
+      "licenses": "Apache-2.0",
+      "repoUrl": "https://github.com/NewRelic/eslint-plugin-newrelic",
+      "versionedRepoUrl": "https://github.com/NewRelic/eslint-plugin-newrelic/tree/v0.3.0",
+      "licenseFile": "node_modules/@newrelic/eslint-plugin-newrelic/LICENSE",
+      "licenseUrl": "https://github.com/NewRelic/eslint-plugin-newrelic/blob/v0.3.0/LICENSE",
+      "licenseTextSource": "file",
+      "publisher": "New Relic"
+    },
+    "@semantic-release/changelog@5.0.1": {
+      "name": "@semantic-release/changelog",
+      "version": "5.0.1",
+      "range": "^5.0.0",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/semantic-release/changelog",
+      "versionedRepoUrl": "https://github.com/semantic-release/changelog/tree/v5.0.1",
+      "licenseFile": "node_modules/@semantic-release/changelog/LICENSE",
+      "licenseUrl": "https://github.com/semantic-release/changelog/blob/v5.0.1/LICENSE",
+      "licenseTextSource": "file",
+      "publisher": "Pierre Vanduynslager",
+      "url": "https://github.com/pvdlg"
+    },
+    "@semantic-release/git@9.0.0": {
+      "name": "@semantic-release/git",
+      "version": "9.0.0",
+      "range": "^9.0.0",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/semantic-release/git",
+      "versionedRepoUrl": "https://github.com/semantic-release/git/tree/v9.0.0",
+      "licenseFile": "node_modules/@semantic-release/git/LICENSE",
+      "licenseUrl": "https://github.com/semantic-release/git/blob/v9.0.0/LICENSE",
+      "licenseTextSource": "file",
+      "publisher": "Pierre Vanduynslager",
+      "url": "https://github.com/pvdlg"
+    },
+    "eslint@7.2.0": {
+      "name": "eslint",
+      "version": "7.2.0",
+      "range": "^7.2.0",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/eslint/eslint",
+      "versionedRepoUrl": "https://github.com/eslint/eslint/tree/v7.2.0",
+      "licenseFile": "node_modules/eslint/LICENSE",
+      "licenseUrl": "https://github.com/eslint/eslint/blob/v7.2.0/LICENSE",
+      "licenseTextSource": "file",
+      "publisher": "Nicholas C. Zakas",
+      "email": "nicholas+npm@nczconsulting.com"
+    },
+    "prettier@2.0.5": {
+      "name": "prettier",
+      "version": "2.0.5",
+      "range": "^2.0.5",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/prettier/prettier",
+      "versionedRepoUrl": "https://github.com/prettier/prettier/tree/v2.0.5",
+      "licenseFile": "node_modules/prettier/LICENSE",
+      "licenseUrl": "https://github.com/prettier/prettier/blob/v2.0.5/LICENSE",
+      "licenseTextSource": "file",
+      "publisher": "James Long"
+    }
+  }
 }
