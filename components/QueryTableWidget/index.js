@@ -107,9 +107,10 @@ export default class QueryTableWidget extends React.Component {
             <GridItem columnSpan={1}>
                 {queryChooser}
             </GridItem>
-            <GridItem columnSpan={11}>
-                    <TextField
+            <GridItem columnSpan={11} >
+                    <TextField style={{width:'100%'}}
                         label="Enter NRQL:"
+                        
                         value={formData.nrql }
                         onChange={(e)=>{this.handleChange('nrql',e.target.value)}}
                     />
@@ -118,6 +119,7 @@ export default class QueryTableWidget extends React.Component {
             <Grid>
              <GridItem columnStart={2} columnEnd={12}>
                     <TextField
+                        style={{width:'100%'}}
                         label="Sort field"
                         value={formData.sortField }
                         onChange={(e)=>{this.handleChange('sortField',e.target.value)}}
