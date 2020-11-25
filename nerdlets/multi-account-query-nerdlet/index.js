@@ -1,7 +1,7 @@
 import React from 'react';
 import QueryTableWidget from '../../components/QueryTableWidget'
 import Configurator from '../../components/Configurator'
-import { Spinner } from 'nr1'
+import { Spinner, Grid, GridItem } from 'nr1'
 import CONFIG from '../../config.json'
 
 export default class MultiAccountQueryNerdlet extends React.Component {
@@ -76,7 +76,8 @@ export default class MultiAccountQueryNerdlet extends React.Component {
         needsConfig=<QueryTableWidget config={config} />
        }
 
-       return <div>
+       return <Grid>
+           <GridItem columnSpan={12}>
            
                 {needsConfig}
 
@@ -95,6 +96,7 @@ export default class MultiAccountQueryNerdlet extends React.Component {
 
                     />
                     </div>
-           </div>
+                </GridItem>
+           </Grid>  
       }
 }
