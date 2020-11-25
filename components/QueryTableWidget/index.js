@@ -104,10 +104,13 @@ export default class QueryTableWidget extends React.Component {
         let form =  <form onSubmit={(e)=>{e.preventDefault()}}>
             <Grid>
 
-            <GridItem columnSpan={1}>
+            <GridItem columnSpan={12}>
                 {queryChooser}
             </GridItem>
-            <GridItem columnSpan={11} >
+            </Grid>
+            <br /><br />
+            <Grid>
+            <GridItem columnSpan={12} >
                     <TextField style={{width:'100%'}}
                         label="Enter NRQL:"
                         
@@ -117,7 +120,7 @@ export default class QueryTableWidget extends React.Component {
                 </GridItem>
             </Grid>
             <Grid>
-             <GridItem columnStart={2} columnEnd={12}>
+             <GridItem columnSpan={12}>
                     <TextField
                         style={{width:'100%'}}
                         label="Sort field"
@@ -127,7 +130,7 @@ export default class QueryTableWidget extends React.Component {
                 </GridItem>
             </Grid>
             <Grid>
-             <GridItem columnStart={2} columnEnd={12}>
+             <GridItem columnSpan={12}>
                     <Checkbox className="formatCheckBox"
                         checked={formData.csvChecked}
                         onChange={(e)=>{this.handleChange('csvChecked',e.target.checked)}}
@@ -137,7 +140,7 @@ export default class QueryTableWidget extends React.Component {
             </Grid>
 
             <Grid>
-                <GridItem columnStart={2} columnEnd={12}>
+                <GridItem columnSpan={12}>
                 <br />    
                 <Button onClick={this.formSubmit} iconType={Button.ICON_TYPE.INTERFACE__OPERATIONS__SEARCH} type={Button.TYPE.PRIMARY}>Run query</Button>
                 </GridItem>
@@ -239,7 +242,7 @@ export default class QueryTableWidget extends React.Component {
                                             }
                                         </AccountsNRQL>
                                   } else {
-                                    return <Grid><GridItem columnStart={2} columnEnd={12}>Enter a query above and click the "Run Query" button.</GridItem></Grid>
+                                    return <Grid><GridItem columnStart={1} columnEnd={12}>Enter a query above and click the "Run Query" button.</GridItem></Grid>
                                   }
                                 })()
 
