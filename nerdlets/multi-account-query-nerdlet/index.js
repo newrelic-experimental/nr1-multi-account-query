@@ -81,7 +81,7 @@ export default class MultiAccountQueryNerdlet extends React.Component {
            
                 {needsConfig}
 
-                <div style={{marginTop:"5em"}}>
+                <div style={{padding:"2em", marginTop:"5em"}}>
                 <Configurator  
                         schema={this.schema}                                // schema for the config form data
                         dataChangeHandler={(data)=>{this.setState({config:data})}}        // callback function run when config changes

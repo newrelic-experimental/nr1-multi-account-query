@@ -148,7 +148,7 @@ export default class QueryTableWidget extends React.Component {
         </form>
 
 
-        return <div>
+        return <div className="formContainer">
               {form}
               <div className="tableArea">
               <AccountsQuery>
