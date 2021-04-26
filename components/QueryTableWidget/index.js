@@ -74,9 +74,12 @@ export default class QueryTableWidget extends React.Component {
                             }
                         }
                         //auto detect columns
-                        let startIndex= (row.facet || row.facets) ? 2 : 0
+                        delete row.facet
+                        delete row.facets
                         let fields=Object.keys(row)
-                        for(let i=startIndex; i < fields.length; i++) {
+                        console.log("fields",fields)
+                       
+                        for(let i=0; i < fields.length; i++) {
                             if(row[fields[i]] && typeof row[fields[i]] == "object") {
                                 let subFields=Object.keys(row[fields[i]])
                                 subFields.forEach((subField)=>{
