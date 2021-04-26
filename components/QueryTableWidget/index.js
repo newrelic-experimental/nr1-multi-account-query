@@ -50,9 +50,6 @@ export default class QueryTableWidget extends React.Component {
             }
         }}>{selectOptions}</Select>
 
-
-
-
         const tabulateData = (data,sortField)=>{
             let tabulatedData=[]
             Object.keys(data).forEach((account_ref)=>{
@@ -74,9 +71,11 @@ export default class QueryTableWidget extends React.Component {
                             }
                         }
                         //auto detect columns
-                        let startIndex= (row.facet || row.facets) ? 2 : 0
+                        delete row.facet
+                        delete row.facets
                         let fields=Object.keys(row)
-                        for(let i=startIndex; i < fields.length; i++) {
+                       
+                        for(let i=0; i < fields.length; i++) {
                             if(row[fields[i]] && typeof row[fields[i]] == "object") {
                                 let subFields=Object.keys(row[fields[i]])
                                 subFields.forEach((subField)=>{
@@ -88,8 +87,6 @@ export default class QueryTableWidget extends React.Component {
                                 rowData[fields[i]]=row[fields[i]]
                             }
                         } 
-                        
-
                         tabulatedData.push(rowData)
                     })
                 }
