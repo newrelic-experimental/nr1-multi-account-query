@@ -77,7 +77,6 @@ export default class QueryTableWidget extends React.Component {
                         delete row.facet
                         delete row.facets
                         let fields=Object.keys(row)
-                        console.log("fields",fields)
                        
                         for(let i=0; i < fields.length; i++) {
                             if(row[fields[i]] && typeof row[fields[i]] == "object") {
@@ -91,8 +90,6 @@ export default class QueryTableWidget extends React.Component {
                                 rowData[fields[i]]=row[fields[i]]
                             }
                         } 
-                        
-
                         tabulatedData.push(rowData)
                     })
                 }
