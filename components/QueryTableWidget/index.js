@@ -50,9 +50,6 @@ export default class QueryTableWidget extends React.Component {
             }
         }}>{selectOptions}</Select>
 
-
-
-
         const tabulateData = (data,sortField)=>{
             let tabulatedData=[]
             Object.keys(data).forEach((account_ref)=>{
