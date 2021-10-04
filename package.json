@@ -9,6 +9,7 @@
         "eslint-fix": "eslint nerdlets/ --fix"
     },
     "dependencies": {
+        "moment": "^2.29.1",
         "prop-types": "^15.6.2",
         "react": "^16.6.3",
         "react-csv": "^2.0.3",

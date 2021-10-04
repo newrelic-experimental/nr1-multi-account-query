@@ -23,4 +23,14 @@ It incorporates a [custom component](components/AccountrNRQL/index.js) that auto
 The application stores configuration using NerdStorage so you must specify your New Relic account ID in the [config.json](config.json). Everything else is managed within the application.
 
 
+## Date/Time formatting
+Some fields return unix timestamps. To format these into more readable values specify the format you require in the 'as' label. To do this suffix you label with `|DATE:your-date-format-here`.
+
+e.g:
+```
+select earliest(timestamp) as 'earliest|DATE:YYYY-MM-DD hh:mm', latest(timestamp) as 'latest|DATE:Do MMMM YYYY h:mm a' from Transaction 
+```
+Date formating strings should be specified as per the [momentjs documentation](https://momentjs.com/docs/#/displaying/format/)
+
+
 
