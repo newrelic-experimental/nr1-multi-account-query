@@ -2,6 +2,7 @@ import React from 'react';
 import {Spinner, AccountsQuery,TableChart,TextField,Button, Grid, GridItem,SelectItem, Select, Checkbox } from 'nr1'
 import { CSVLink, CSVDownload } from "react-csv"
 import AccountsNRQL from '../AccountsNRQL'
+import moment from 'moment'
 
 export default class QueryTableWidget extends React.Component {
 
@@ -27,6 +28,23 @@ export default class QueryTableWidget extends React.Component {
         this.setState({
             formData: fdata
         });
+    }
+
+    formatDate(fieldName,value) {
+        if(value && Number.isInteger(value) && value >0) {
+            const formatter=fieldName.match(/.*\|DATE:(.+)/)
+            if(formatter.length > 1) {
+                const date = moment(value)
+                const format=formatter[1]
+                return date.format(formatter[1])
+            } else {
+                return value
+            }
+
+
+        } else {
+            return value
+        }
     }
 
     render() {
@@ -74,7 +92,6 @@ export default class QueryTableWidget extends React.Component {
                         delete row.facet
                         delete row.facets
                         let fields=Object.keys(row)
-                       
                         for(let i=0; i < fields.length; i++) {
                             if(row[fields[i]] && typeof row[fields[i]] == "object") {
                                 let subFields=Object.keys(row[fields[i]])
@@ -86,6 +103,15 @@ export default class QueryTableWidget extends React.Component {
                                 //straight values
                                 rowData[fields[i]]=row[fields[i]]
                             }
+
+                            //format date
+                            if(fields[i].includes("|DATE:")) {
+                                rowData[fields[i]]=this.formatDate(fields[i],rowData[fields[i]])
+                                let fieldName=fields[i].match(/([^\|]+).*/)[1]
+                                rowData[fieldName]=this.formatDate(fields[i],rowData[fields[i]])
+                                delete rowData[fields[i]]
+                            }
+                            
                         } 
                         tabulatedData.push(rowData)
                     })
@@ -131,7 +157,7 @@ export default class QueryTableWidget extends React.Component {
                     <Checkbox className="formatCheckBox"
                         checked={formData.csvChecked}
                         onChange={(e)=>{this.handleChange('csvChecked',e.target.checked)}}
-                        label='Table output'
+                        label='Tabulated output (deselect for raw JSON)'
                     />
                 </GridItem>
             </Grid>
@@ -185,14 +211,14 @@ export default class QueryTableWidget extends React.Component {
                                                 if (loading) return <Grid><GridItem columnStart={2} columnEnd={12}><Spinner inline /> Loading query for data for {accountList.length} accounts...</GridItem></Grid>
                                                     if (error) { console.log(error);return <Grid><GridItem columnSpan={12}>Error loading data, check the console.</GridItem></Grid>}
                                                     if (data) {
-
                                                         let tableData=tabulateData(data,this.state.sortField)
-
                                                         //determine the columns, we need to find the row with the most columns.
                                                         let columns=[]
                                                         tableData.forEach((row)=>{
                                                             let rowKeys=Object.keys(row)
-                                                            if(rowKeys.length > columns.length) { columns=rowKeys }
+                                                            if(rowKeys.length > columns.length) { 
+                                                                columns=rowKeys
+                                                            }
                                                         })
                                                         
                                                                                                                 
@@ -214,16 +240,22 @@ export default class QueryTableWidget extends React.Component {
                                                             let outTable
                                                             if(this.state.csvChecked===false) {
                                                                 
-                                                                outTable=<div>
-                                                                    <CSVLink filename="QueryData.csv" data={tdata[0].data}>Download CSV</CSVLink>
+                                                                outTable=<div style={{width:"100%"}}>
+                                                                    <CSVLink filename="QueryData.csv" data={tdata[0].data}>Download data as CSV</CSVLink>
                                                                     <br /><br />
                                                                     <TextField
                                                                     multiline
-                                                                    label='JSON Data'
+                                                                    label='Raw JSON Data'
+                                                                    fullwidth 
+                                                                    style={{width:"100%"}}
                                                                     value={JSON.stringify(tdata[0].data)}  />
                                                                 </div>
                                                             } else {
-                                                                outTable=<TableChart data={tdata} fullWidth style={{"height": "80vw"}} />
+                                                                outTable= <>
+                                                                <CSVLink filename="QueryData.csv" data={tdata[0].data}>Download data as CSV</CSVLink>
+                                                                    <br /><br />
+                                                                    <TableChart data={tdata} fullWidth style={{"height": "80vw"}} />
+                                                                </>
                                                             }
                                                             return <Grid><GridItem columnSpan={12}>
                                                                 <div className="totalRows"><strong>Total rows:</strong> {tableData.length}</div>
