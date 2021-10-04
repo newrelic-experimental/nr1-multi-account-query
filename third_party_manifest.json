@@ -1,9 +1,24 @@
 {
-  "lastUpdated": "Mon Apr 26 2021 15:43:18 GMT+0000 (Coordinated Universal Time)",
+  "lastUpdated": "Mon Oct 04 2021 09:49:36 GMT+0000 (Coordinated Universal Time)",
   "projectName": "nr1-multi-account-query",
   "projectUrl": "https://github.com/newrelic-experimental/nr1-multi-account-query",
   "includeDev": true,
+  "includeOptDeps": false,
   "dependencies": {
+    "moment@2.29.1": {
+      "name": "moment",
+      "version": "2.29.1",
+      "range": "^2.29.1",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/moment/moment",
+      "versionedRepoUrl": "https://github.com/moment/moment/tree/v2.29.1",
+      "licenseFile": "node_modules/moment/LICENSE",
+      "licenseUrl": "https://github.com/moment/moment/blob/v2.29.1/LICENSE",
+      "licenseTextSource": "file",
+      "publisher": "Iskren Ivov Chernev",
+      "email": "iskren.chernev@gmail.com",
+      "url": "https://github.com/ichernev"
+    },
     "prop-types@15.7.2": {
       "name": "prop-types",
       "version": "15.7.2",
